@@ -25,21 +25,25 @@ class MainActivity : AppCompatActivity() {
         val screenWidthDp = displayMetrics.widthPixels / displayMetrics.density
         val spanCount = (screenWidthDp / desiredItemWidthDp).toInt().coerceAtLeast(1)
 
-        // correct property name: layoutManager (lowercase)
         recyclerView.layoutManager = GridLayoutManager(this, spanCount)
         recyclerView.setHasFixedSize(true)
     }
 
     private fun addDataToList() {
-        // Using built-in Android icons to avoid missing-drawable compile errors.
         val list = arrayListOf(
-            Phone(android.R.drawable.ic_menu_camera, "iPhone 17 (placeholder)"),
-            Phone(android.R.drawable.ic_menu_gallery, "iPhone Air 17 (placeholder)"),
-            Phone(android.R.drawable.ic_menu_compass, "Samsung S25 (placeholder)"),
-            Phone(android.R.drawable.ic_menu_crop, "Vivo T4 (placeholder)"),
-            Phone(android.R.drawable.ic_menu_call, "Z Fold 7 (placeholder)"),
-            Phone(android.R.drawable.ic_menu_search, "iQOO 10R (placeholder)"),
-            Phone(android.R.drawable.ic_menu_manage, "Samsung F62 (placeholder)")
+            Phone(R.drawable.iph17, "iPhone 17 (placeholder)"),
+            Phone(R.drawable.iphair17, "iPhone Air 17 (placeholder)"),
+            Phone(R.drawable.samsungs25, "Samsung S25 (placeholder)"),
+            Phone(R.drawable.vivot4, "Vivo T4 (placeholder)"),
+            Phone(R.drawable.iph17, "iPhone 17 (placeholder)"),
+            Phone(R.drawable.zfold7, "Z Fold 7 (placeholder)"),
+            Phone(R.drawable.iqoo10r, "iQOO 10R (placeholder)"),
+            Phone(R.drawable.sf62, "Samsung F62 (placeholder)"),
+            Phone(R.drawable.vivot4, "Vivo T4 (placeholder)"),
+            Phone(R.drawable.samsungs25, "Samsung S25 (placeholder)"),
+            Phone(R.drawable.iph17, "iPhone 17 (placeholder)"),
+            Phone(R.drawable.iphair17, "iPhone Air 17 (placeholder)")
+
         )
 
         val adapter = PhoneAdapter(list)
