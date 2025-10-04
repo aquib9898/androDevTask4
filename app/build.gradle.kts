@@ -35,13 +35,28 @@ android {
     }
 }
 
-dependencies {
+/*
+ * Force alignment of core-ktx so transitive dependencies can't pull an incompatible
+ * preview/alpha that caused the "inconsistencies" dialog.
+ */
+configurations.all {
+    resolutionStrategy {
+        // Force a stable core-ktx version
+        force("androidx.core:core-ktx:1.13.1")
+    }
+}
 
-    implementation(libs.androidx.core.ktx)
+dependencies {
+    // Explicit, stable versions to avoid version mismatch dialog
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // keep the rest of your libs from the version catalog
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
