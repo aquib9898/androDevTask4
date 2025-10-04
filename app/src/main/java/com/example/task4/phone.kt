@@ -1,3 +1,6 @@
 package com.example.task4
 
-data class phone(val image: Int, val name: String)
+data class Phone(
+    val image: Int,
+    val name: String
+)
