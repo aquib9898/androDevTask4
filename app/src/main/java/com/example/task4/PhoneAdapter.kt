@@ -7,35 +7,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-// Your data class (if not already created)
-data class Phone(
-    val imageResId: Int,
-    val name: String
-)
-
-// Adapter class
-class PhoneAdapter(private val phoneList: ArrayList<Phone>) :
+class PhoneAdapter(private val phoneList: List<Phone>) :
     RecyclerView.Adapter<PhoneAdapter.PhoneViewHolder>() {
 
-    // ViewHolder class
     class PhoneViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
         val textView: TextView = itemView.findViewById(R.id.textView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhoneViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.each_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.each_item, parent, false)
         return PhoneViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: PhoneViewHolder, position: Int) {
-        val currentItem = phoneList[position]
-        holder.imageView.setImageResource(currentItem.imageResId)
-        holder.textView.text = currentItem.name
+        val item = phoneList[position]
+        holder.imageView.setImageResource(item.image)
+        holder.textView.text = item.name
     }
 
-    override fun getItemCount(): Int {
-        return phoneList.size
-    }
+    override fun getItemCount(): Int = phoneList.size
 }
